@@ -13,7 +13,7 @@
 % Licence (version 2 or later); please refer to the file 
 % Licence.txt, included with the software, for details.
 pkg load statistics
-randn('seed', 2)
+randn('seed', 1)
 % Simple demonstration for IMM using velocity and acceleration models
 
 % Save figures
@@ -41,18 +41,18 @@ ind{2} = [1 2 3 4 5 6]';
 % Transition matrix for the continous-time acceleration model.
 F2 = [0 0 1 0 0 0;
       0 0 0 1 0 0;
-      0 0 0 0 1 0;
-      0 0 0 0 0 1;
+      0 0 0 0 0 0;
+      0 0 0 0 0 0;
       0 0 0 0 0 0;
       0 0 0 0 0 0];
 
 % Noise effect matrix for the continous-time system.
 L2 = [0 0;
       0 0;
-      0 0;
-      0 0;
       1 0;
-      0 1];
+      0 1;
+      0 0;
+      0 0];
 
 % Process noise variance
 q2 = 1.00;
@@ -166,7 +166,7 @@ clf; clc;
 % $$$ title('Position');
 
 m = [0 0 0 -1 0 0]';
-P = diag([0.1 0.1 0.1 0.1 0.5 0.5]);
+P = diag([0.1 0.1 0.1 0.1 0 0]);
 
 %%%% Space for the estimates %%%% 
 
@@ -196,14 +196,14 @@ P1 = diag([0.1 0.1 0.1 0.1 0 0]);
 
 % KF2
 M2 = [0 0 0 -1 0 0]';
-P2 = diag([0.1 0.1 0.1 0.1 0.5 0.5]);
+P2 = diag([0.1 0.1 0.1 0.1 0 0]);
 
 
 % IMM
 x_ip{1} = [0 0 0 -1 0 0]';
 P_ip{1} = diag([0.1 0.1 0.1 0.1 0 0]);
 x_ip{2} = [0 0 0 -1 0 0]';
-P_ip{2} = diag([0.1 0.1 0.1 0.1 0.5 0.5]);
+P_ip{2} = diag([0.1 0.1 0.1 0.1 0 0]);
 
 
 % Filtering stpng.
